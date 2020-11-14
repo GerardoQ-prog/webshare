@@ -29,30 +29,22 @@ export default function Home() {
 
   const shareUrl = "facebook.com"
 
-  
+  const [image, setimage] = useState(null)
+
+  const handleImage= (e) =>{
+    setimage(e.target.files[0])
+  }
+
   const handleShare = () =>{
-    // if ('share' in navigator) {
-    //       navigator.share({
-    //         title: 'Probando Share API',
-    //         text: 'Suscríbete a Youtube.com/LeonidasEsteban',
-    //         url: 'https://static.toiimg.com/photo/72975551.cms',
-    //       })
-    //       .then(()=>{
-    //         alert('hemos logrado compartir')
-    //       })
-    //       .catch(()=>{
-    //         alert('no se pudo compartir, prueba usando https en un navegador móvil')
-    //       })
-
-    //   } else {
-    //     alert('No está disponible el API de web share')
-    //   }
+    
 
 
 
-      if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+
+    if ('share' in navigator) {
+      if (navigator.canShare && navigator.canShare({ files: image })) {
         navigator.share({
-          files: filesArray,
+          files: image,
           title: 'Pictures',
           text: 'Our Pictures.',
         })
@@ -61,7 +53,7 @@ export default function Home() {
       } else {
         alert(`Your system doesn't support sharing files.`);
       }
-
+    }
 }
 
   return (
@@ -117,7 +109,7 @@ export default function Home() {
 
             // OPTIONAL PARAMETERS
             url: 'https://regalistos.pe', // (defaults to current url)
-            image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
+            og: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
             description: 'sadsadsadsad',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
@@ -126,7 +118,7 @@ export default function Home() {
           }}
         />
         </div>
-        <input type="file"></input>
+        <input type="file" onChange={handleImage}></input>
         <button onClick={handleShare}>Compartir</button>
 
       </main>
