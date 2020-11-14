@@ -28,6 +28,27 @@ import {InlineShareButtons} from 'sharethis-reactjs';
 export default function Home() {
 
   const shareUrl = "facebook.com"
+
+  
+  const handleShare = () =>{
+    if ('share' in navigator) {
+          navigator.share({
+            title: 'Probando Share API',
+            text: 'Suscríbete a Youtube.com/LeonidasEsteban',
+            url: './thumb.jpg',
+          })
+          .then(()=>{
+            alert('hemos logrado compartir')
+          })
+          .catch(()=>{
+            alert('no se pudo compartir, prueba usando https en un navegador móvil')
+          })
+
+      } else {
+        alert('No está disponible el API de web share')
+      }
+}
+
   return (
     <div className={styles.container}>
       <Head>
@@ -90,6 +111,8 @@ export default function Home() {
           }}
         />
         </div>
+
+        <button onClick={handleShare}>Compartir</button>
 
       </main>
     </div>
