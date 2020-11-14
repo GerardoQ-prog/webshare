@@ -59,12 +59,12 @@ export default function Home() {
     if ('share' in navigator) {
 
         navigator.share({
-          files: image,
+          // files: image,
           title: 'Pictures',
           text: 'Our Pictures.',
         })
-        .then(() => console.log('Share was successful.'))
-        .catch((error) => console.log('Sharing failed', error));
+        .then(() => alert('Share was successful.'))
+        .catch((error) => alert('Sharing failed', error));
       
     }else{
       alert('no web api')
