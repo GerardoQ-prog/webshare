@@ -51,7 +51,7 @@ export default function Home() {
         .then(() => console.log('Share was successful.'))
         .catch((error) => console.log('Sharing failed', error));
       } else {
-        alert(`Your system doesn't support sharing files.`);
+        alert(`Your system doesn't support sharing files`);
       }
     }
 }
