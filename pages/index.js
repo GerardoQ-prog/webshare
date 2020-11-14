@@ -59,7 +59,7 @@ export default function Home() {
     if ('share' in navigator) {
 
         navigator.share({
-          // files: image,
+          files: image,
           title: 'Pictures',
           text: 'Our Pictures.',
         })
