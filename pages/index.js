@@ -56,7 +56,7 @@ export default function Home() {
   // }
 
 
-    if ('share' in navigator) {
+    // if ('share' in navigator) {
       if (navigator.canShare && navigator.canShare({ files: image })) {
         navigator.share({
           files: image,
@@ -68,9 +68,9 @@ export default function Home() {
       } else {
         alert(`Your system doesn't support sharing files.`);
       }
-    }else{
-      alert('no web api')
-    }
+    // }else{
+    //   alert('no web api')
+    // }
 }
 
   return (
