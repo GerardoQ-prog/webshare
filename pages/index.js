@@ -35,6 +35,8 @@ export default function Home() {
   const handleImage= (e) =>{
     setimage(e.target.files[0])
   }
+
+  const name ="Gerardo"
   const handleShare = () =>{
     
 
@@ -56,7 +58,7 @@ export default function Home() {
   // }
 
 
-    if ('share' in navigator) {
+    if (navigator.vi) {
 
         navigator.share({
           files: image,
@@ -114,7 +116,6 @@ export default function Home() {
             labels: 'null',        // button labels (cta, counts, null)
             language: 'es',       // which language to use (see LANGUAGES)
             networks: [           // which networks to include (see SHARING NETWORKS)
-              'whatsapp',
               'facebook',
             ],
             padding: 12,          // padding within buttons (INTEGER)
@@ -123,9 +124,37 @@ export default function Home() {
             size: 40,             // the size of each button (INTEGER)
 
             // OPTIONAL PARAMETERS
-            url: 'https://regalistos.pe', // (defaults to current url)
+            // url: `¡Feliz Cumpleaños ${name}! Te invitamos a la fiesta de este niño , revisa la invitacion y la lista de regalos en https://regalistos.pe`, // (defaults to current url)
+            url:'https://regalistos.pe',
             image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
-            description: 'sadsadsadsad',       // (defaults to og:description or twitter:description)
+            description: 'custom title',       // (defaults to og:description or twitter:description)
+            title: 'custom title',            // (defaults to og:title or twitter:title)
+            message: 'custom email text',     // (only for email sharing)
+            subject: 'custom email subject',  // (only for email sharing)
+            username: 'custom twitter handle' // (only for twitter sharing)
+          }}
+        />
+        <InlineShareButtons
+          config={{
+            alignment: 'center',  // alignment of buttons (left, center, right)
+            color: 'social',      // set the color of buttons (social, white)
+            enabled: true,        // show/hide buttons (true, false)
+            font_size: 16,        // font size for the buttons
+            labels: 'null',        // button labels (cta, counts, null)
+            language: 'es',       // which language to use (see LANGUAGES)
+            networks: [           // which networks to include (see SHARING NETWORKS)
+              'whatsapp',
+            ],
+            padding: 12,          // padding within buttons (INTEGER)
+            radius: 4,            // the corner radius on each button (INTEGER)
+            // show_total: true,
+            size: 40,             // the size of each button (INTEGER)
+
+            // OPTIONAL PARAMETERS
+            url: `¡Feliz Cumpleaños ${name}! Te invitamos a la fiesta de este niño , revisa la invitacion y la lista de regalos en https://regalistos.pe`, // (defaults to current url)
+            // url:'https://regalistos.pe',
+            image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
+            description: 'custom title',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
             subject: 'custom email subject',  // (only for email sharing)
