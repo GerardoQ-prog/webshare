@@ -24,6 +24,7 @@ import {
 } from "react-share";
 
 import {InlineShareButtons} from 'sharethis-reactjs';
+import { useState } from 'react';
 
 export default function Home() {
 
@@ -34,11 +35,25 @@ export default function Home() {
   const handleImage= (e) =>{
     setimage(e.target.files[0])
   }
-
   const handleShare = () =>{
     
 
+  //   if ('share' in navigator) {
+  //     navigator.share({
+  //       title: 'Probando Share API',
+  //       text: 'Suscríbete a Youtube.com/LeonidasEsteban',
+  //       url: './thumb.jpg',
+  //     })
+  //     .then(()=>{
+  //       alert('hemos logrado compartir')
+  //     })
+  //     .catch(()=>{
+  //       alert('no se pudo compartir, prueba usando https en un navegador móvil')
+  //     })
 
+  // } else {
+  //   alert('No está disponible el API de web share')
+  // }
 
 
     if ('share' in navigator) {
@@ -51,8 +66,10 @@ export default function Home() {
         .then(() => console.log('Share was successful.'))
         .catch((error) => console.log('Sharing failed', error));
       } else {
-        alert(`Your system doesn't support sharing files`);
+        alert(`Your system doesn't support sharing files.`);
       }
+    }else{
+      alert('no web api')
     }
 }
 
@@ -109,7 +126,7 @@ export default function Home() {
 
             // OPTIONAL PARAMETERS
             url: 'https://regalistos.pe', // (defaults to current url)
-            og: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
+            image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
             description: 'sadsadsadsad',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
