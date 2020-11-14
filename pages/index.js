@@ -31,22 +31,37 @@ export default function Home() {
 
   
   const handleShare = () =>{
-    if ('share' in navigator) {
-          navigator.share({
-            title: 'Probando Share API',
-            text: 'Suscríbete a Youtube.com/LeonidasEsteban',
-            url: './thumb.jpg',
-          })
-          .then(()=>{
-            alert('hemos logrado compartir')
-          })
-          .catch(()=>{
-            alert('no se pudo compartir, prueba usando https en un navegador móvil')
-          })
+    // if ('share' in navigator) {
+    //       navigator.share({
+    //         title: 'Probando Share API',
+    //         text: 'Suscríbete a Youtube.com/LeonidasEsteban',
+    //         url: 'https://static.toiimg.com/photo/72975551.cms',
+    //       })
+    //       .then(()=>{
+    //         alert('hemos logrado compartir')
+    //       })
+    //       .catch(()=>{
+    //         alert('no se pudo compartir, prueba usando https en un navegador móvil')
+    //       })
 
+    //   } else {
+    //     alert('No está disponible el API de web share')
+    //   }
+
+
+
+      if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+        navigator.share({
+          files: filesArray,
+          title: 'Pictures',
+          text: 'Our Pictures.',
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
       } else {
-        alert('No está disponible el API de web share')
+        console.log(`Your system doesn't support sharing files.`);
       }
+
 }
 
   return (
@@ -111,7 +126,7 @@ export default function Home() {
           }}
         />
         </div>
-
+        <input type="file"></input>
         <button onClick={handleShare}>Compartir</button>
 
       </main>
