@@ -29,80 +29,51 @@ import { NextSeo } from 'next-seo';
 
 export default function Home() {
 
-  const shareUrl = "facebook.com"
 
-  const [image, setimage] = useState(null)
+  const [image, setimage] = useState(null);
 
-  const handleImage= (e) =>{
-    setimage(e.target.files[0])
-  }
+  const handleImage = (e) => {
+    setimage(e.target.files[0]);
+    console.log(  typeof (e.target.files[0]));
+  };
 
-  const name ="Gerardo"
-  const handleShare = () =>{
-    
+  const handleShare = () => {
+    //se recupera la imagen que escogio cliente
+    const file_input = document.querySelector("#file_input");
 
-  //   if ('share' in navigator) {
-  //     navigator.share({
-  //       title: 'Probando Share API',
-  //       text: 'Suscríbete a Youtube.com/LeonidasEsteban',
-  //       url: './thumb.jpg',
-  //     })
-  //     .then(()=>{
-  //       alert('hemos logrado compartir')
-  //     })
-  //     .catch(()=>{
-  //       alert('no se pudo compartir, prueba usando https en un navegador móvil')
-  //     })
+    console.log(file_input);
 
-  // } else {
-  //   alert('No está disponible el API de web share')
-  // }
+    const title = "HOLAAAA";
+    const text = "GERARDO";
+    const url = "https://regalistos.pe";
+    // como vera ese files es el file_input.files quisiera saber que es ese .files
+    // const files = file_input.disabled ? undefined : file_input.files;
 
-        const file_input = document.querySelector('#file_input');
+    const files = {
+      0:{
+        lastModified: 1602270542302,
+        lastModifiedDate: new Date(),
+        name: "c2f824c0-af4a-4f66-ab89-6e3e755aa2cc.jpg",
+        size: 72366,
+        type: "image/jpeg",
+        webkitRelativePath: "",
+      },
+      length: 1
+    }
 
-        const title = 'HOLAAAA'
-        const text = 'GERARDO'
-        const url = 'https://regalistos.pe'
-        const files = file_input.disabled ? undefined : file_input.files;
-
-
-        if('share' in navigator){
-          navigator.share({files, title, text, url})
-          .then(() => alert('Share was successful.'))
-          .catch((error) => alert('Sharing failed', error));
-        }else{
-          alert('mobile')
-        }
-       
-      
- 
-}
+    // se envia mediante el share
+    if ("share" in navigator) {
+      navigator
+        .share({ files, title, text, url })
+        .then(() => alert("Share was successful."))
+        .catch((error) => alert("Sharing failed", error));
+    } else {
+      alert("mobile");
+    }
+  };
 
   return (
     <>
-      <NextSeo
-        openGraph={{
-          type: "website",
-          url: "https://www.example.com/page",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
-          images: [
-            {
-              url:
-                "https://storage.googleapis.com/regalistos-22875.appspot.com/meetings/card/.jpg?GoogleAccessId=firebase-adminsdk-ctl6y%40regalistos-22875.iam.gserviceaccount.com&Expires=2556057600&Signature=LhJj5ddWDvzBXtOQ9v56ISQSJz9I0QSujAeRSTQBbPq2vsg1KZd2364lJlT1ygXeLweJuAT0pTryLYCwUQa3sjdpP00CfkkdpB%2F6ErhrPvrVrwlu30kINFqBz%2B7sXMXZLrSRM755N7XxnSKyRU5IyKGMZKdbatn5tM7zhtKJXXJCMZqR8kjfRbhccNktlnVJfgH%2Fh%2Fx4thYQbPQWsuhn%2F0hLmSYPDxhq1tlvmuuemvQLcAYGOl90bdLxeaPqEcqcYl467l1SsJLoabsSgRV96JjaPGm0qAoMvu5qcxMTH4szHTwTF76rJU0b%2FtjOJeY0aQOv5qORfJJjH8eT3OWTcw%3D%3D",
-              width: 800,
-              height: 600,
-              alt: "Og Image Alt",
-            },
-            {
-              url: "https://www.example.ie/og-image-2.jpg",
-              width: 800,
-              height: 600,
-              alt: "Og Image Alt 2",
-            },
-          ],
-        }}
-      />
       <div className={styles.container}>
         <main className={styles.main}>
           hello :v
