@@ -103,7 +103,11 @@ export default function Home() {
       navigator
         .share({ files, title, text, url })
         .then(() => alert("Share was successful."))
-        .catch((error) => alert("Sharing failed", error));
+        .catch((error) => {
+          alert("Sharing failed", error)
+          console.log('sharing failed', error)
+        }
+        );
     } else {
       alert("mobile");
     }
