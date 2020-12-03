@@ -69,7 +69,7 @@ export default function Home() {
  
 
 
-  const handleShare = () => {
+  const handleShare = async () => {
     //se recupera la imagen que escogio cliente
     const file_input = document.querySelector("#file_input");
 
@@ -97,7 +97,12 @@ export default function Home() {
 
     // se envia mediante el share
 
-    const files = dataURLtoFile(`data:image/png;base64,${imagenantes}`,'hello.png');
+    // const files = dataURLtoFile(`data:image/png;base64,${imagenantes}`,'hello.png');
+
+    const base64url = `data:image/png;base64,${imagenantes}`
+    const blob = await (await fetch(base64url)).blob();
+    const file = new File([blob], 'fileName.png', { type: blob.type });
+    const files = [file]
     
     if ("share" in navigator) {
       navigator
