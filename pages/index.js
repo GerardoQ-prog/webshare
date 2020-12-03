@@ -49,17 +49,17 @@ export default function Home() {
     // como vera ese files es el file_input.files quisiera saber que es ese .files
     // const files = file_input.disabled ? undefined : file_input.files;
 
+    
     const files = {
-      0:{
         lastModified: 1602270542302,
         lastModifiedDate: new Date(),
         name: "c2f824c0-af4a-4f66-ab89-6e3e755aa2cc.jpg",
         size: 72366,
         type: "image/jpeg",
         webkitRelativePath: "",
-      },
-      length: 1
-    }
+      }
+
+    
 
     // se envia mediante el share
     if ("share" in navigator) {
