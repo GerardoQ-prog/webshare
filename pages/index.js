@@ -111,7 +111,52 @@ export default function Home() {
     } else {
       alert("mobile");
     }
+    
   };
+
+  const handleShare1 = () =>{
+     //se recupera la imagen que escogio cliente
+     const file_input = document.querySelector("#file_input");
+
+     console.log(file_input);
+ 
+     const title = "HOLAAAA";
+     const text = "GERARDO";
+     const url = "https://regalistos.pe";
+     // como vera ese files es el file_input.files quisiera saber que es ese .files
+ 
+     const files = file_input.disabled ? undefined : file_input.files;
+ 
+     
+     // const files = {
+     //   0:{
+     //     lastModified: 1602270542302,
+     //     lastModifiedDate: new Date(),
+     //     name: "c2f824c0-af4a-4f66-ab89-6e3e755aa2cc.jpg",
+     //     size: 72366,
+     //     type: "image/jpeg",
+     //     webkitRelativePath: "",
+     //   },
+     //   length:1
+     // }
+ 
+     // se envia mediante el share
+ 
+    //  const files = dataURLtoFile(`data:image/png;base64,${imagenantes}`,'hello.png');
+     
+     if ("share" in navigator) {
+       navigator
+         .share({ files, title, text, url })
+         .then(() => alert("Share was successful."))
+         .catch((error) => {
+           alert("Sharing failed", error)
+           console.log('sharing failed', error)
+         }
+         );
+     } else {
+       alert("mobile");
+     }
+  }
 
   return (
     <>
@@ -198,6 +243,8 @@ export default function Home() {
           </div>
           <input type="file" onChange={handleImage} id="file_input"></input>
           <button onClick={handleShare}>Compartir</button>
+          <button onClick={handleShare1}>Compartir cargando imagen</button>
+
           {/* <button onClick={probar}> probar</button> */}
         </main>
       </div>
