@@ -58,19 +58,22 @@ export default function Home() {
   // }
 
 
-    if (navigator.vi) {
 
-        navigator.share({
-          files: image,
-          title: 'Pictures',
-          text: 'Our Pictures.',
-        })
-        .then(() => alert('Share was successful.'))
-        .catch((error) => alert('Sharing failed', error));
+        if('share' in navigator){
+          navigator.share({
+          
+            title: 'Pictures',
+            text: 'Our Pictures. regalistos :) ',
+            url:'https://storage.googleapis.com/regalistos-22875.appspot.com/meetings/card/.jpg?GoogleAccessId=firebase-adminsdk-ctl6y%40regalistos-22875.iam.gserviceaccount.com&Expires=2556057600&Signature=LhJj5ddWDvzBXtOQ9v56ISQSJz9I0QSujAeRSTQBbPq2vsg1KZd2364lJlT1ygXeLweJuAT0pTryLYCwUQa3sjdpP00CfkkdpB%2F6ErhrPvrVrwlu30kINFqBz%2B7sXMXZLrSRM755N7XxnSKyRU5IyKGMZKdbatn5tM7zhtKJXXJCMZqR8kjfRbhccNktlnVJfgH%2Fh%2Fx4thYQbPQWsuhn%2F0hLmSYPDxhq1tlvmuuemvQLcAYGOl90bdLxeaPqEcqcYl467l1SsJLoabsSgRV96JjaPGm0qAoMvu5qcxMTH4szHTwTF76rJU0b%2FtjOJeY0aQOv5qORfJJjH8eT3OWTcw%3D%3D'
+          })
+          .then(() => alert('Share was successful.'))
+          .catch((error) => alert('Sharing failed', error));
+        }else{
+          alert('mobile')
+        }
+       
       
-    }else{
-      alert('no web api')
-    }
+ 
 }
 
   return (
@@ -126,7 +129,7 @@ export default function Home() {
             // OPTIONAL PARAMETERS
             // url: `¡Feliz Cumpleaños ${name}! Te invitamos a la fiesta de este niño , revisa la invitacion y la lista de regalos en https://regalistos.pe`, // (defaults to current url)
             url:'https://regalistos.pe',
-            image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
+            image: 'https://storage.googleapis.com/regalistos-22875.appspot.com/meetings/card/.jpg?GoogleAccessId=firebase-adminsdk-ctl6y%40regalistos-22875.iam.gserviceaccount.com&Expires=2556057600&Signature=LhJj5ddWDvzBXtOQ9v56ISQSJz9I0QSujAeRSTQBbPq2vsg1KZd2364lJlT1ygXeLweJuAT0pTryLYCwUQa3sjdpP00CfkkdpB%2F6ErhrPvrVrwlu30kINFqBz%2B7sXMXZLrSRM755N7XxnSKyRU5IyKGMZKdbatn5tM7zhtKJXXJCMZqR8kjfRbhccNktlnVJfgH%2Fh%2Fx4thYQbPQWsuhn%2F0hLmSYPDxhq1tlvmuuemvQLcAYGOl90bdLxeaPqEcqcYl467l1SsJLoabsSgRV96JjaPGm0qAoMvu5qcxMTH4szHTwTF76rJU0b%2FtjOJeY0aQOv5qORfJJjH8eT3OWTcw%3D%3D',  // (defaults to og:image or twitter:image)
             description: 'custom title',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
