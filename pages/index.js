@@ -25,6 +25,7 @@ import {
 
 import {InlineShareButtons} from 'sharethis-reactjs';
 import { useState } from 'react';
+import { NextSeo } from 'next-seo';
 
 export default function Home() {
 
@@ -80,6 +81,28 @@ export default function Home() {
 }
 
   return (
+    <>
+    <NextSeo
+    openGraph={{
+      type: 'website',
+      url: 'https://www.example.com/page',
+      title: 'Open Graph Title',
+      description: 'Open Graph Description',
+      images: [
+        {
+          url: 'https://storage.googleapis.com/regalistos-22875.appspot.com/meetings/card/.jpg?GoogleAccessId=firebase-adminsdk-ctl6y%40regalistos-22875.iam.gserviceaccount.com&Expires=2556057600&Signature=LhJj5ddWDvzBXtOQ9v56ISQSJz9I0QSujAeRSTQBbPq2vsg1KZd2364lJlT1ygXeLweJuAT0pTryLYCwUQa3sjdpP00CfkkdpB%2F6ErhrPvrVrwlu30kINFqBz%2B7sXMXZLrSRM755N7XxnSKyRU5IyKGMZKdbatn5tM7zhtKJXXJCMZqR8kjfRbhccNktlnVJfgH%2Fh%2Fx4thYQbPQWsuhn%2F0hLmSYPDxhq1tlvmuuemvQLcAYGOl90bdLxeaPqEcqcYl467l1SsJLoabsSgRV96JjaPGm0qAoMvu5qcxMTH4szHTwTF76rJU0b%2FtjOJeY0aQOv5qORfJJjH8eT3OWTcw%3D%3D',
+          width: 800,
+          height: 600,
+          alt: 'Og Image Alt',
+        },
+        {
+          url: 'https://www.example.ie/og-image-2.jpg',
+          width: 800,
+          height: 600,
+          alt: 'Og Image Alt 2',
+        },
+      ],
+    }}/>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -159,7 +182,7 @@ export default function Home() {
             // OPTIONAL PARAMETERS
             url: `¡Feliz Cumpleaños ${name}! Te invitamos a la fiesta de este niño , revisa la invitacion y la lista de regalos en https://regalistos.pe`, // (defaults to current url)
             // url:'https://regalistos.pe',
-            image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
+            // image: 'https://bit.ly/2CMhCMC',  // (defaults to og:image or twitter:image)
             description: 'custom title',       // (defaults to og:description or twitter:description)
             title: 'custom title',            // (defaults to og:title or twitter:title)
             message: 'custom email text',     // (only for email sharing)
@@ -168,10 +191,11 @@ export default function Home() {
           }}
         />
         </div>
-        <input type="file" onChange={handleImage}></input>
+        <input type="file" onChange={handleImage} id="file_input"></input>
         <button onClick={handleShare}>Compartir</button>
 
       </main>
     </div>
+    </>
   )
 }
