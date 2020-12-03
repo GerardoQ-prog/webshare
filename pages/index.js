@@ -120,6 +120,7 @@ export default function Home() {
     navigator.share({
       title: 'Hello',
       text: 'Check out this image!',
+      url : "https://regalistos.pe",
       files: [file],
     })
     
