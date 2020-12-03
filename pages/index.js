@@ -57,14 +57,14 @@ export default function Home() {
 
   useEffect(() => {
 
-    var file = dataURLtoFile(`data:image/png;base64,${imagenantes}`,'hello.png');
+    var file = dataURLtoFile(`data:image/jpeg;base64,${imagenantes}`,'hello.jpg');
     setFiles(file)
 
     console.log('files convertido',file)
 
   }, [])
 
-
+  console.log('estado',files)
   
  
 
