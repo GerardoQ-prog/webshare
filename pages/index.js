@@ -71,9 +71,9 @@ export default function Home() {
 
   const handleShare = async () => {
     //se recupera la imagen que escogio cliente
-    const file_input = document.querySelector("#file_input");
+    // const file_input = document.querySelector("#file_input");
 
-    console.log(file_input);
+    // console.log(file_input);
 
     const title = "HOLAAAA";
     const text = "GERARDO";
@@ -102,20 +102,26 @@ export default function Home() {
     const base64url = `data:image/png;base64,${imagenantes}`
     const blob = await (await fetch(base64url)).blob();
     const file = new File([blob], 'fileName.png', { type: blob.type });
-    const files = [file]
+    // const files = [file]
     
-    if ("share" in navigator) {
-      navigator
-        .share({ files, title, text, url })
-        .then(() => alert("Share was successful."))
-        .catch((error) => {
-          alert("Sharing failed", error)
-          console.log('sharing failed', error)
-        }
-        );
-    } else {
-      alert("mobile");
-    }
+    // if ("share" in navigator) {
+    //   navigator
+    //     .share({ files, title, text, url })
+    //     .then(() => alert("Share was successful."))
+    //     .catch((error) => {
+    //       alert("Sharing failed", error)
+    //       console.log('sharing failed', error)
+    //     }
+    //     );
+    // } else {
+    //   alert("mobile");
+    // }
+
+    navigator.share({
+      title: 'Hello',
+      text: 'Check out this image!',
+      files: [file],
+    })
     
   };
 
