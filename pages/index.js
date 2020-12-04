@@ -26,6 +26,8 @@ import {
 import {InlineShareButtons} from 'sharethis-reactjs';
 import { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
+import { saveAs } from 'file-saver';
+
 
 export default function Home() {
 
@@ -159,6 +161,37 @@ export default function Home() {
      }
   }
 
+  const [imageresult, setImageresult] = useState("")
+
+  useEffect(() => {
+    // var FileSaver = require('file-saver');
+    //  const algo = FileSaver.saveAs("https://firebasestorage.googleapis.com/v0/b/testeo-93e3e.appspot.com/o/21010%20-%20Super%20H%C3%A9roes%2FC%C3%B3mics%201%20-%20L.png?alt=media&token=c80def2f-c3f1-42e0-9b76-ed62a8e6a4d2", "image.jpg");
+    //  console.log(algo)
+
+    getBase64ImageFromUrl('https://www.trecebits.com/wp-content/uploads/2020/06/busqueda-inversa-de-imagenes.jpg')
+    .then(result => 
+      setImageresult(result))
+    .catch(err => console.error(err));
+  }, [])
+
+
+  async function getBase64ImageFromUrl(imageUrl) {
+    var res = await fetch(imageUrl);
+    var blob = await res.blob();
+  
+    return new Promise((resolve, reject) => {
+      var reader  = new FileReader();
+      reader.addEventListener("load", function () {
+          resolve(reader.result);
+      }, false);
+  
+      reader.onerror = () => {
+        return reject(this);
+      };
+      reader.readAsDataURL(blob);
+    })
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -245,7 +278,7 @@ export default function Home() {
           <input type="file" onChange={handleImage} id="file_input"></input>
           <button onClick={handleShare}>Compartir</button>
           <button onClick={handleShare1}>Compartir cargando imagen</button>
-
+          <img src={imageresult} alt="prueba"></img>
           {/* <button onClick={probar}> probar</button> */}
         </main>
       </div>
