@@ -27,6 +27,7 @@ import {InlineShareButtons} from 'sharethis-reactjs';
 import { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
 import { saveAs } from 'file-saver';
+import Axios from 'axios';
 
 
 export default function Home() {
@@ -168,11 +169,21 @@ export default function Home() {
     //  const algo = FileSaver.saveAs("https://firebasestorage.googleapis.com/v0/b/testeo-93e3e.appspot.com/o/21010%20-%20Super%20H%C3%A9roes%2FC%C3%B3mics%201%20-%20L.png?alt=media&token=c80def2f-c3f1-42e0-9b76-ed62a8e6a4d2", "image.jpg");
     //  console.log(algo)
 
+
+  }, [])
+
+  const pruebaimg = () =>{
     getBase64ImageFromUrl('https://www.trecebits.com/wp-content/uploads/2020/06/busqueda-inversa-de-imagenes.jpg')
     .then(result => 
       setImageresult(result))
     .catch(err => console.error(err));
-  }, [])
+  }
+
+  const download = () => {
+    Axios({
+
+    })
+  }
 
 
   async function getBase64ImageFromUrl(imageUrl) {
@@ -190,6 +201,22 @@ export default function Home() {
       };
       reader.readAsDataURL(blob);
     })
+  }
+
+  const getBase64Image = (img) => {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  }
+
+
+  const canvas = () =>{
+    var base64 = getBase64Image(document.getElementById("imageid"));
+    console.log(base64)
   }
 
   return (
@@ -278,7 +305,9 @@ export default function Home() {
           <input type="file" onChange={handleImage} id="file_input"></input>
           <button onClick={handleShare}>Compartir</button>
           <button onClick={handleShare1}>Compartir cargando imagen</button>
+          <button onClick={canvas}>prueba img</button>
           <img src={imageresult} alt="prueba"></img>
+          <img id='imageid' src='https://www.google.de/images/srpr/logo11w.png' ></img>
           {/* <button onClick={probar}> probar</button> */}
         </main>
       </div>
