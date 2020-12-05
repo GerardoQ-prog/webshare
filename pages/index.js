@@ -171,7 +171,7 @@ export default function Home() {
 
 
       const saveas = () => {
-         const algo = saveAs('https://firebasestorage.googleapis.com/v0/b/testeo-93e3e.appspot.com/o/21010%20-%20Super%20H%C3%A9roes%2FC%C3%B3mics%201%20-%20L.png?alt=media&token=c80def2f-c3f1-42e0-9b76-ed62a8e6a4d2',"image.png")
+         const algo = saveAs('https://storage.googleapis.com/regalistos-22875.appspot.com/meetings/card/Gerardo%20Javier.jpg?GoogleAccessId=firebase-adminsdk-ctl6y%40regalistos-22875.iam.gserviceaccount.com&Expires=2556075600&Signature=BuyWxsW3DW9BdAXrWY1hoKgFR9os2Yy6v4SmqZNIj49APFgGn2RzarJCDMEM9GNp3rk%2Fgun2fxz1TdF5opmWZHqPvLGBFyjf7qwbKgkC%2FQzFXPWtUKCMvtrx00tfgR22djosCne9Mi1O8kpGXDSi2yw2lSy2wOXsLkcdauZr9P8GeR020FxCoeOz%2BZk4gPJpPvGnwJ1Nx5JA8rA3SrG52zH10XWYziiAMGT9c2nZD7XLIRzk%2B63L0Mqg%2BQAw2qkgwoLDDFDR%2FZ%2BrRn2jqVJ%2ByQ%2BiwK5HOpNvdgirAjXAXPUEAeeLIcXRF6fFm3CwwgbgUeDn0Mk9GwxWCB6mB%2FkEJA%3D%3D',"image.png")
         console.log(algo)
       }
       
